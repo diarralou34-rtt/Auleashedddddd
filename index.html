@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUNLEASHED - Streetwear & Urban Fashion</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+--primary: #1a1a1a;
+--secondary: #d4af37;
+--accent: #ff6b35;
+--light: #f5f5f5;
+--text: #2d2d2d;
+--green: #7cb342;
+--dark: #0a0a0a;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: var(--text);
+line-height: 1.6;
+background: var(--light);
+}
+
+/* NAVBAR */
+nav {
+background: var(--primary);
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.logo {
+font-size: 1.6rem;
+font-weight: 900;
+color: var(--green);
+letter-spacing: -1px;
+text-transform: uppercase;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.nav-links {
+display: flex;
+gap: 2.5rem;
+list-style: none;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: 700;
+transition: all 0.3s;
+position: relative;
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--green);
+transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+width: 100%;
+}
+
+.cart-icon {
+color: white;
+font-size: 1.8rem;
+cursor: pointer;
+position: relative;
+transition: transform 0.3s;
+}
+
+.cart-icon:hover {
+transform: scale(1.1);
+}
+
+.cart-count {
+position: absolute;
+top: -8px;
+right: -8px;
+background: var(--accent);
+color: white;
+border-radius: 50%;
+width: 22px;
+height: 22px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.75rem;
+font-weight: bold;
+box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* HERO */
+.hero {
+background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+color: white;
+padding: 5rem 2rem;
+text-align: center;
+position: relative;
+overflow: hidden;
+min-height: 500px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: -30%;
+right: -15%;
+width: 500px;
+height: 500px;
+background: radial-gradient(circle, var(--green) 0%, transparent 70%);
+opacity: 0.08;
+border-radius: 50%;
+}
+
+.hero::after {
+content: '';
+position: absolute;
+bottom: -20%;
+left: -10%;
+width: 400px;
+height: 400px;
+background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+opacity: 0.05;
+border-radius: 50%;
+}
+
+.hero h1 {
+font-size: 4.5rem;
+font-weight: 900;
+margin-bottom: 1rem;
+letter-spacing: -2px;
+position: relative;
+z-index: 1;
+animation: slideDown 0.8s ease-out;
+line-height: 1.2;
+}
+
+.hero h1 .accent {
+color: var(--green);
+display: block;
+font-size: 1.1em;
+}
+
+.hero p {
+font-size: 1.4rem;
+margin-bottom: 2.5rem;
+opacity: 0.95;
+position: relative;
+z-index: 1;
+animation: fadeIn 0.8s ease-out 0.2s backwards;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.hero-btn {
+background: linear-gradient(135deg, var(--green) 0%, #9ccc65 100%);
+color: white;
+padding: 1.2rem 3rem;
+border: none;
+font-size: 1.1rem;
+font-weight: bold;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 2px;
+transition: all 0.3s;
+position: relative;
+z-index: 1;
+animation: fadeIn 0.8s ease-out 0.4s backwards;
+box-shadow: 0 6px 20px rgba(124, 179, 66, 0.3);
+border-radius: 4px;
+}
+
+.hero-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(124, 179, 66, 0.5);
+}
+
+/* PRODUCTS */
+.products {
+padding: 5rem 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.section-title {
+text-align: center;
+font-size: 2.8rem;
+font-weight: 900;
+margin-bottom: 3.5rem;
+color: var(--primary);
+position: relative;
+display: inline-block;
+width: 100%;
+}
+
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+width: 120px;
+height: 5px;
+background: linear-gradient(90deg, var(--green) 0%, var(--accent) 100%);
+border-radius: 3px;
+}
+
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 2.5rem;
+margin-top: 3rem;
+}
+
+.product-card {
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+animation: fadeInUp 0.6s ease-out;
+border: 1px solid #f0f0f0;
+}
+
+.product-card:hover {
+transform: translateY(-12px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+border-color: var(--green);
+}
+
+.product-image-wrapper {
+position: relative;
+overflow: hidden;
+height: 360px;
+background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.product-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s;
+}
+
+.product-card:hover .product-image {
+transform: scale(1.05);
+}
+
+.product-badge {
+position: absolute;
+top: 12px;
+right: 12px;
+background: var(--accent);
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 700;
+text-transform: uppercase;
+}
+
+.product-info {
+padding: 1.8rem;
+}
+
+.product-name {
+font-size: 1.2rem;
+font-weight: 800;
+margin-bottom: 0.8rem;
+color: var(--primary);
+line-height: 1.3;
+}
+
+.product-description {
+font-size: 0.9rem;
+color: #666;
+margin-bottom: 1rem;
+line-height: 1.4;
+}
+
+.product-price {
+font-size: 1.5rem;
+color: var(--green);
+font-weight: 900;
+margin-bottom: 1.2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.add-to-cart {
+width: 100%;
+padding: 1rem;
+background: linear-gradient(135deg, var(--primary) 0%, #2d2d2d 100%);
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: 800;
+cursor: pointer;
+transition: all 0.3s;
+text-transform: uppercase;
+font-size: 0.95rem;
+letter-spacing: 0.5px;
+}
+
+.add-to-cart:hover {
+background: linear-gradient(135deg, var(--green) 0%, #9ccc65 100%);
+transform: translateY(-2px);
+}
+
+/* CONTACT */
+.contact-section {
+background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+color: white;
+padding: 5rem 2rem;
+margin-top: 4rem;
+}
+
+.contact-container {
+max-width: 1100px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+}
+
+.contact-info h3 {
+font-size: 2rem;
+margin-bottom: 2rem;
+color: var(--green);
+font-weight: 900;
+}
+
+.contact-item {
+margin-bottom: 2.5rem;
+}
+
+.contact-item strong {
+color: var(--green);
+display: block;
+margin-bottom: 0.7rem;
+font-size: 1.1rem;
+}
+
+.contact-item a {
+color: white;
+text-decoration: none;
+transition: all 0.3s;
+word-break: break-all;
+}
+
+.contact-item a:hover {
+color: var(--accent);
+}
+
+.contact-item p {
+color: rgba(255,255,255,0.9);
+}
+
+.form-group {
+margin-bottom: 1.8rem;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 0.7rem;
+font-weight: 700;
+color: var(--green);
+font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 1rem;
+border: 2px solid var(--green);
+border-radius: 6px;
+font-family: inherit;
+font-size: 1rem;
+background: rgba(255,255,255,0.08);
+color: white;
+transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+outline: none;
+background: rgba(255,255,255,0.12);
+border-color: var(--accent);
+box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+color: rgba(255,255,255,0.5);
+}
+
+.form-group textarea {
+resize: vertical;
+min-height: 140px;
+}
+
+.submit-btn {
+background: linear-gradient(135deg, var(--green) 0%, #9ccc65 100%);
+color: white;
+padding: 1.2rem 2.5rem;
+border: none;
+border-radius: 6px;
+font-weight: 800;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s;
+width: 100%;
+font-size: 1rem;
+box-shadow: 0 6px 20px rgba(124, 179, 66, 0.3);
+}
+
+.submit-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(124, 179, 66, 0.5);
+}
+
+/* CART */
+.cart-modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.8);
+z-index: 1000;
+align-items: flex-end;
+backdrop-filter: blur(2px);
+}
+
+.cart-modal.open {
+display: flex;
+}
+
+.cart-content {
+background: white;
+width: 100%;
+max-width: 420px;
+height: 100vh;
+overflow-y: auto;
+animation: slideUp 0.3s ease-out;
+display: flex;
+flex-direction: column;
+}
+
+.cart-header {
+background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+color: white;
+padding: 1.8rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-shrink: 0;
+}
+
+.cart-header h2 {
+font-size: 1.5rem;
+font-weight: 900;
+}
+
+.cart-close {
+background: none;
+border: none;
+color: white;
+font-size: 1.8rem;
+cursor: pointer;
+transition: color 0.3s;
+}
+
+.cart-close:hover {
+color: var(--accent);
+}
+
+.cart-items {
+padding: 1.5rem;
+flex: 1;
+overflow-y: auto;
+}
+
+.cart-item {
+display: flex;
+gap: 1.2rem;
+margin-bottom: 1.8rem;
+padding-bottom: 1.8rem;
+border-bottom: 1px solid #eee;
+}
+
+.cart-item-image {
+width: 90px;
+height: 90px;
+object-fit: cover;
+border-radius: 6px;
+flex-shrink: 0;
+}
+
+.cart-item-details {
+flex: 1;
+}
+
+.cart-item-name {
+font-weight: 800;
+margin-bottom: 0.5rem;
+font-size: 0.95rem;
+}
+
+.cart-item-price {
+color: var(--green);
+font-weight: 800;
+margin-bottom: 0.8rem;
+}
+
+.remove-btn {
+background: var(--accent);
+color: white;
+border: none;
+padding: 0.4rem 1rem;
+border-radius: 3px;
+cursor: pointer;
+font-size: 0.8rem;
+font-weight: 700;
+transition: all 0.3s;
+}
+
+.remove-btn:hover {
+background: var(--primary);
+}
+
+.cart-empty {
+text-align: center;
+padding: 3rem 1rem;
+color: #999;
+font-weight: 600;
+}
+
+.cart-total {
+background: var(--light);
+padding: 1.8rem;
+border-top: 2px solid var(--primary);
+font-size: 1.4rem;
+font-weight: 900;
+flex-shrink: 0;
+}
+
+.checkout-btn {
+width: 100%;
+padding: 1.1rem;
+background: linear-gradient(135deg, var(--green) 0%, #9ccc65 100%);
+color: white;
+border: none;
+border-radius: 4px;
+font-weight: 800;
+cursor: pointer;
+text-transform: uppercase;
+margin-top: 1rem;
+transition: all 0.3s;
+letter-spacing: 0.5px;
+}
+
+.checkout-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 20px rgba(124, 179, 66, 0.3);
+}
+
+/* ANIMATIONS */
+@keyframes slideDown {
+from {
+opacity: 0;
+transform: translateY(-30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+@keyframes slideUp {
+from {
+transform: translateY(30px);
+}
+to {
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.success-message {
+display: none;
+position: fixed;
+top: 30px;
+right: 30px;
+background: linear-gradient(135deg, var(--green) 0%, #9ccc65 100%);
+color: white;
+padding: 1.2rem 2rem;
+border-radius: 6px;
+z-index: 2000;
+animation: slideDown 0.3s ease-out;
+font-weight: 700;
+box-shadow: 0 6px 20px rgba(124, 179, 66, 0.3);
+}
+
+.success-message.show {
+display: block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.hero p {
+font-size: 1.1rem;
+}
+
+.nav-links {
+gap: 1.5rem;
+}
+
+.contact-container {
+grid-template-columns: 1fr;
+}
+
+.section-title {
+font-size: 2rem;
+}
+
+.products-grid {
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 1.5rem;
+}
+
+.cart-content {
+max-width: 100%;
+}
+}
+</style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav>
+<div class="logo">AUNLEASHED</div>
+<ul class="nav-links">
+<li><a href="#products">Shop</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="cart-icon" onclick="toggleCart()">
+🛒
+<span class="cart-count" id="cart-count">0</span>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<h1>AUNLEASHED <span class="accent">COLLECTION</span></h1>
+<p>Streetwear urbain avec des designs iconiques et une qualité premium</p>
+<button class="hero-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+Voir les produits
+</button>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+<h2 class="section-title">Nos Produits</h2>
+<div class="products-grid" id="products-grid">
+<!-- Produits chargés par JavaScript -->
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="contact-container">
+<div class="contact-info">
+<h3>NOUS CONTACTER</h3>
+<div class="contact-item">
+<strong>📧 Email:</strong>
+<a href="mailto:diarralou34@gmail.com">diarralou34@gmail.com</a>
+</div>
+<div class="contact-item">
+<strong>📱 Réseaux Sociaux:</strong>
+<p>Instagram • TikTok • Facebook</p>
+</div>
+<div class="contact-item">
+<strong>🚚 Livraison:</strong>
+<p>Livraison partout en France métropolitaine</p>
+</div>
+<div class="contact-item">
+<strong>💳 Paiement Sécurisé:</strong>
+<p>Carte bancaire • PayPal • Virement</p>
+</div>
+</div>
+
+<form onsubmit="handleSubmit(event)">
+<h3 style="color: var(--green); margin-bottom: 1.8rem; font-weight: 900;">Formulaire de Contact</h3>
+<div class="form-group">
+<label for="name">Votre Nom</label>
+<input type="text" id="name" name="name" placeholder="Entrez votre nom" required>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="votre@email.com" required>
+</div>
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+</div>
+<button type="submit" class="submit-btn">Envoyer le message</button>
+</form>
+</div>
+</section>
+
+<!-- CART MODAL -->
+<div class="cart-modal" id="cart-modal">
+<div class="cart-content">
+<div class="cart-header">
+<h2>Mon Panier</h2>
+<button class="cart-close" onclick="toggleCart()">✕</button>
+</div>
+<div class="cart-items" id="cart-items">
+<p class="cart-empty">Votre panier est vide</p>
+</div>
+<div class="cart-total">
+Total: <span id="cart-total-price">0€</span>
+<button class="checkout-btn" onclick="checkout()">Commander</button>
+</div>
+</div>
+</div>
+
+<div class="success-message" id="success-message">
+✓ Message envoyé avec succès! Nous vous répondrons rapidement.
+</div>
+
+<script>
+// DONNÉES DES PRODUITS AVEC IMAGES
+const products = [
+{
+id: 1,
+name: 'Sweat AUNLEASHED Bear',
+description: 'Sweat gris avec design bear',
+price: 49,
+image: '/mnt/user-data/uploads/Photoroom_20250714_224308.jpeg'
+},
+{
+id: 2,
+name: 'Hoodie Zombie AUNLEASHED',
+description: 'Hoodie gris design zombie',
+price: 59,
+image: '/mnt/user-data/uploads/Photoroom_20250715_124100.jpeg'
+},
+{
+id: 3,
+name: 'Sweat Skull AUNLEASHED',
+description: 'Sweat blanc design skull',
+price: 49,
+image: '/mnt/user-data/uploads/Photoroom_20250714_223841.png'
+},
+{
+id: 4,
+name: 'Pantalon AUNLEASHED Gris',
+description: 'Pantalon gris oversized',
+price: 59,
+image: '/mnt/user-data/uploads/Photoroom_20250714_223631.png'
+},
+{
+id: 5,
+name: 'T-shirt Rick & Morty',
+description: 'T-shirt blanc design Rick',
+price: 29,
+image: '/mnt/user-data/uploads/Photoroom_20250714_211706.png'
+},
+{
+id: 6,
+name: 'T-shirt AUNLEASHED Face',
+description: 'T-shirt blanc design face',
+price: 29,
+image: '/mnt/user-data/uploads/Photoroom_20250714_211555.jpeg'
+},
+{
+id: 7,
+name: 'Sweat AUNLEASHED Blanc',
+description: 'Sweat blanc oversized',
+price: 49,
+image: '/mnt/user-data/uploads/Photoroom_20250714_211423.jpeg'
+},
+{
+id: 8,
+name: 'Sweat Melting AUNLEASHED',
+description: 'Sweat gris design melting',
+price: 49,
+image: '/mnt/user-data/uploads/Photoroom_20250714_211806.png'
+},
+{
+id: 9,
+name: 'Pantalon Jogging Gris',
+description: 'Pantalon jogging confortable',
+price: 39,
+image: '/mnt/user-data/uploads/IMG_0156.jpeg'
+},
+{
+id: 10,
+name: 'T-shirt AUNLEASHED Noir',
+description: 'T-shirt noir premium',
+price: 29,
+image: '/mnt/user-data/uploads/IMG_0152.png'
+},
+{
+id: 11,
+name: 'Sweat AUNLEASHED Premium',
+description: 'Sweat blanc premium quality',
+price: 59,
+image: '/mnt/user-data/uploads/IMG_0138.png'
+},
+{
+id: 12,
+name: 'T-shirt AUNLEASHED Face Girl',
+description: 'T-shirt design face girl',
+price: 29,
+image: '/mnt/user-data/uploads/IMG_0137.jpeg'
+}
+];
+
+let cart = [];
+
+// CHARGER LES PRODUITS
+function loadProducts() {
+const grid = document.getElementById('products-grid');
+grid.innerHTML = products.map(product => `
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'">
+<div class="product-badge">AUNLEASHED</div>
+</div>
+<div class="product-info">
+<h3 class="product-name">${product.name}</h3>
+<p class="product-description">${product.description}</p>
+<div class="product-price">
+<span>${product.price}€</span>
+</div>
+<button class="add-to-cart" onclick="addToCart(${product.id})">
+➕ Ajouter au panier
+</button>
+</div>
+</div>
+`).join('');
+}
+
+// AJOUTER AU PANIER
+function addToCart(productId) {
+const product = products.find(p => p.id === productId);
+const existingItem = cart.find(item => item.id === productId);
+
+if (existingItem) {
+existingItem.quantity++;
+} else {
+cart.push({ ...product, quantity: 1 });
+}
+
+updateCart();
+showMessage(`${product.name} ajouté au panier!`);
+}
+
+// METTRE À JOUR LE PANIER
+function updateCart() {
+const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+document.getElementById('cart-count').textContent = count;
+
+const cartItems = document.getElementById('cart-items');
+if (cart.length === 0) {
+cartItems.innerHTML = '<p class="cart-empty">Votre panier est vide</p>';
+} else {
+cartItems.innerHTML = cart.map(item => `
+<div class="cart-item">
+<img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.style.display='none'">
+<div class="cart-item-details">
+<div class="cart-item-name">${item.name}</div>
+<div class="cart-item-price">${item.price}€ x ${item.quantity}</div>
+<button class="remove-btn" onclick="removeFromCart(${item.id})">Supprimer</button>
+</div>
+</div>
+`).join('');
+}
+
+const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+document.getElementById('cart-total-price').textContent = total + '€';
+}
+
+// SUPPRIMER DU PANIER
+function removeFromCart(productId) {
+cart = cart.filter(item => item.id !== productId);
+updateCart();
+}
+
+// TOGGLE PANIER
+function toggleCart() {
+document.getElementById('cart-modal').classList.toggle('open');
+}
+
+// CHECKOUT
+function checkout() {
+if (cart.length === 0) {
+alert('Votre panier est vide!');
+return;
+}
+
+const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const items = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+const mailtoLink = `mailto:diarralou34@gmail.com?subject=Commande AUNLEASHED&body=Bonjour,%0AProduits:%0A${items}%0ATotal: ${total}€%0AMerci!`;
+window.location.href = mailtoLink;
+}
+
+// SUBMIT FORM
+function handleSubmit(event) {
+event.preventDefault();
+
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const message = document.getElementById('message').value;
+
+const mailtoLink = `mailto:diarralou34@gmail.com?subject=Message de ${name}&body=${encodeURIComponent(message)}%0A%0ADe: ${email}`;
+window.location.href = mailtoLink;
+
+showMessage('Message envoyé! Vérifiez votre client email.');
+event.target.reset();
+}
+
+// MESSAGE SUCCESS
+function showMessage(text) {
+const msg = document.getElementById('success-message');
+msg.textContent = '✓ ' + text;
+msg.classList.add('show');
+setTimeout(() => msg.classList.remove('show'), 3000);
+}
+
+// INITIALISER
+loadProducts();
+</script>
+</body>
+</html>
